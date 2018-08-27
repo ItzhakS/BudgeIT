@@ -1,0 +1,37 @@
+<div class="expenseContainer container-fluid mb-4">
+    <div class="expenseFormWrapper container card">
+      <h2 class="headline text-success">expense</h2>
+      <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()" class="form-group">
+          <div class="row">
+          <div class="col-5">
+            <div class="row">
+              <h4 class="col expenseSources">Source</h4>
+            </div>
+            <div formArrayName="expenseSources">
+              <div *ngFor="let source of expenseSources.controls; let i=index">
+                <div class="row justify-content-around">
+                  <input [formControlName]="i" class="form-control col-5" type="text">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="row">
+              <h4 class="col expenseAmount">Amount</h4>
+            </div>
+            <div formArrayName="expenseAmounts">
+              <div *ngFor="let amount of expenseAmounts.controls; let i=index">
+                <div class="row justify-content-around">
+                  <input [formControlName]="i" class="form-control col-5" type="number">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <button type="submit" class="btn btn-primary m-2">Save</button>
+          <button type='button' class="btn btn-success m-2" (click)="addExpense()">Add Expense</button>
+        </form>
+      <!-- {{expenseForm.value | async}} -->
+    </div>
+  </div>
+  <!--[disabled]="!profileForm.valid"-->

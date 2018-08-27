@@ -1,0 +1,38 @@
+<div class="incomeContainer container-fluid mb-4">
+  <div class="incomeFormWrapper container card">
+    <h2 class="headline text-success">Income</h2>
+    <form [formGroup]="incomeForm" (ngSubmit)="onSubmit()" class="form-group">
+        <div class="row">
+        <div class="col-5">
+          <div class="row">
+            <h4 class="col incomeSources">Source</h4>
+          </div>
+          <div formArrayName="incomeSources">
+            <div *ngFor="let source of incomeSources.controls; let i=index">
+              <div class="row justify-content-around">
+                <input [formControlName]="i" class="form-control col-5" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="row">
+            <h4 class="col incomeAmount">Amount</h4>
+          </div>
+          <div formArrayName="incomeAmounts">
+            <div *ngFor="let amount of incomeAmounts.controls; let i=index">
+              <div class="row justify-content-around">
+                <input [formControlName]="i" (blur)="sendInput()" class="form-control col-5" type="number">
+              </div>
+              <!-- {{amount.value}} -->
+            </div>
+          </div>
+        </div>
+      </div>
+        <button type="submit" class="btn btn-primary m-2">Save</button>
+        <button type='button' class="btn btn-success m-2" (click)="addIncome()">Add Income</button>
+      </form>
+    <!-- {{incomeForm.value | async}} -->
+  </div>
+</div>
+<!--[disabled]="!profileForm.valid"-->
