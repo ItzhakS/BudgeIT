@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'BudgeIT';
+  incomeAmounts = [];
+
+  recieveIncome($event){
+    this.incomeAmounts=[];
+    $event.forEach(income => {
+      this.incomeAmounts.push(income.value);
+    });
+    console.log(this.incomeAmounts);
+    console.log($event);
+  }
 }
