@@ -46,8 +46,11 @@ export class IncomeComponent implements OnInit {
     this.incomeAmounts.push(this.fb.control(''));
   }
 
-  sendInput(){
+  sendAmountInput(){
     this.inputEvent.emit(this.incomeAmounts.controls)
+  }
+  sendSourceInput(){
+    this.inputEvent.emit(this.incomeSources.controls)
   }
 
 }
