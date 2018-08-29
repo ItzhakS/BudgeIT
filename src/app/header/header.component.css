@@ -1,7 +1,20 @@
 .navbar{
   height: 10vh;
 }
-.logo{
-  background-image: url('../../assets/BudgeLogo.png')
 
+.logoContainer{
+  height: 77px;
+  width: 195px;
+  border-radius: 13px;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+.logo{
+  height: 65px;
+  width: 58px;
+  background: url('../../assets/BudgeLogo.png');
+  background-size: 60px;
+  background-repeat: no-repeat;
+  border-radius: 60px;
+  background-color: rgba(255, 255, 255, .9);
+  
 }
