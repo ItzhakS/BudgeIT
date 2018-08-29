@@ -10,7 +10,7 @@
             <div formArrayName="expenseSources">
               <div *ngFor="let source of expenseSources.controls; let i=index">
                 <div class="row justify-content-around">
-                  <input [formControlName]="i" class="form-control col-5" type="text">
+                  <input [formControlName]="i" (blur)="sendSourceInput()" class="form-control col-5" type="text">
                 </div>
               </div>
             </div>
@@ -22,7 +22,7 @@
             <div formArrayName="expenseAmounts">
               <div *ngFor="let amount of expenseAmounts.controls; let i=index">
                 <div class="row justify-content-around">
-                  <input [formControlName]="i" class="form-control col-5" type="number">
+                  <input [formControlName]="i" (blur)="sendAmountInput()" class="form-control col-5" type="number">
                 </div>
               </div>
             </div>

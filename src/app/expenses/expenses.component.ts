@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 
@@ -29,6 +29,7 @@ export class ExpensesComponent implements OnInit {
     return this.expenseForm.get('expenseAmounts') as FormArray;
   }
 
+  @Output() inputEvent = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder) { }
 
@@ -40,4 +41,10 @@ export class ExpensesComponent implements OnInit {
     this.expenseAmounts.push(this.fb.control(''));
   }
 
+  sendAmountInput(){
+    this.inputEvent.emit(this.expenseAmounts.controls)
+  }
+  sendSourceInput(){
+    this.inputEvent.emit(this.expenseSources.controls)
+  }
 }
