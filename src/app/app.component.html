@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-8">
       <app-income (inputEvent)="recieveIncome($event)" ></app-income>
-      <app-expenses></app-expenses>
+      <app-expenses (inputEvent)="recieveExpenses($event)"></app-expenses>
     </div>
     <div class="col-4 border-left border-info">
       <app-totals [totalIncome]="incomeObj" [totalExpenses]="expenseObj"></app-totals>

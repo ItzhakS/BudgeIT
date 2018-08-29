@@ -31,16 +31,17 @@ export class AppComponent {
   }
 
   recieveExpenses($event){
-    $event.forEach(expense => {
-      if(typeof expense.value == 'number' ){
-        this.expenseAmounts=[];
+    if(typeof $event[0].value == 'number' ){
+      this.expenseAmounts=[];
+      $event.forEach(expense => {
         this.expenseAmounts.push(expense.value);
-      }
-      else{
+      });
+    } else{
         this.expenseSources=[];
-        this.expenseSources.push(expense.value);
-      }
-    });
+        $event.forEach(expense => {
+          this.expenseSources.push(expense.value);
+      });
+    }
     
     this.expenseObj['expenseAmounts'] = this.expenseAmounts;
     this.expenseObj['expenseSources'] = this.expenseSources;
