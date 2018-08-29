@@ -1,3 +1,32 @@
-<p>
-  totals works!
-</p>
+<div class="container-fluid">
+  <h2 class="headline lead">Totals</h2>
+  <div class="row">
+    <div class="container-fluid col-5">
+      <h4 class="incomeTotalHeadline">Income</h4>
+      <div class="row justify-space-between">
+        <ul class="col-4">
+          <li class="incomeItem" *ngFor="let item of totalIncome.incomeSources">{{item}}:</li>
+        </ul>
+        <ul class="col-4">
+          <li class="incomeItem" *ngFor="let item of totalIncome.incomeAmounts">{{item}}</li>
+        </ul>
+      </div>
+
+      <!-- <pre>
+      {{totalIncome | json}}
+    </pre> -->
+      <!-- <div class="incomeInfo" **ngFor="let item of list"></div> -->
+    </div>
+    <div class="col-5">
+      <h4 class="expenseTotalHeadline">Expense</h4>
+      <div class="row justify-space-between">
+          <ul class="col-4">
+            <li class="expenseItem" *ngFor="let item of totalExpense.expenseSources">{{item}}:</li>
+          </ul>
+          <ul class="col-4">
+            <li class="expenseItem" *ngFor="let item of totalExpense.expenseAmounts">{{item}}</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>

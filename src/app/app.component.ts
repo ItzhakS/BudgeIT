@@ -7,24 +7,25 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BudgeIT';
-  incomeObj: Object;
-  expenseObj: Object;
+  incomeObj: Object = {};
+  expenseObj: Object = {};
   incomeAmounts: Array<number>;
   incomeSources: Array<string>;
   expenseAmounts: Array<number>;
   expenseSources: Array<string>;
 
   recieveIncome($event){
-    $event.forEach(income => {
-      if(typeof income.value == 'number' ){
-        this.incomeAmounts=[];
+    if(typeof $event[0].value == 'number' ){
+      this.incomeAmounts=[];
+      $event.forEach(income => {
         this.incomeAmounts.push(income.value);
+      });
       } else{
         this.incomeSources=[];
-        this.incomeSources.push(income.value);
+        $event.forEach(income => {
+          this.incomeSources.push(income.value);
+        });
       }
-    });
-
     this.incomeObj['incomeAmounts'] = this.incomeAmounts;
     this.incomeObj['incomeSources'] = this.incomeSources;
   }
