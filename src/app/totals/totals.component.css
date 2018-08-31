@@ -1,4 +1,16 @@
 .incomeItem, .expenseItem{
   list-style: none;
-  
+
 }
+
+.progress-barContainer
+{
+  height: 120px;
+}
+.progress{
+  position: relative;
+  top: 40px;
+  transform: rotate(-90deg);
+  height: 3.5rem;
+  width: 115px;
+} 

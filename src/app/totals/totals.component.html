@@ -1,32 +1,57 @@
-<div class="container-fluid">
+<div class="container-fluid totalsWrapper">
   <h2 class="headline lead">Totals</h2>
   <div class="row">
-    <div class="container-fluid col-5">
-      <h4 class="incomeTotalHeadline">Income</h4>
-      <div class="row justify-space-between">
+    <div class="container-fluid col-6">
+        <div class="row progress-barContainer">
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" #incomeProgressBar aria-valuenow="0"
+                aria-valuemin="0" aria-valuemax="0" style="width:0%">
+                {{incomeTotal}}
+              </div>
+              </div>
+          </div>
+      <!-- <div class="row justify-space-between">
         <ul class="col-4">
           <li class="incomeItem" *ngFor="let item of totalIncome.incomeSources">{{item}}:</li>
         </ul>
         <ul class="col-4">
           <li class="incomeItem" *ngFor="let item of totalIncome.incomeAmounts">{{item}}</li>
         </ul>
-      </div>
+      </div> -->
 
       <!-- <pre>
       {{totalIncome | json}}
     </pre> -->
       <!-- <div class="incomeInfo" **ngFor="let item of list"></div> -->
     </div>
-    <div class="col-5">
-      <h4 class="expenseTotalHeadline">Expense</h4>
-      <div class="row justify-space-between">
+    <div class="container-fluid col-6">
+      <div class="row progress-barContainer">
+        <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar" #expenseProgressBar aria-valuenow="0"
+            aria-valuemin="0" aria-valuemax="0" style="width:0%">
+            {{expenseTotal}}
+            </div>
+          </div>
+      </div>
+      <div class="row">
+          
+      </div>
+      <!-- <div class="row justify-space-between">
           <ul class="col-4">
-            <li class="expenseItem" *ngFor="let item of totalExpense.expenseSources">{{item}}:</li>
+            <li class="expenseItem" *ngFor="let item of totalExpenses.expenseSources">{{item}}:</li>
           </ul>
           <ul class="col-4">
-            <li class="expenseItem" *ngFor="let item of totalExpense.expenseAmounts">{{item}}</li>
+            <li class="expenseItem" *ngFor="let item of totalExpenses.expenseAmounts">{{item}}</li>
           </ul>
-        </div>
+        </div> -->
     </div>
+  </div>
+  <div class="row">
+      <div class="container-fluid col-6">
+        <h4 class="incomeTotalHeadline">Income</h4>
+      </div>
+      <div class="container-fluid col-6">
+        <h4 class="expenseTotalHeadline">Expense</h4>
+      </div>
   </div>
 </div>
