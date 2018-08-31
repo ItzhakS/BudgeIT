@@ -1,12 +1,12 @@
 <app-header></app-header>
-<div class="container-fluid">
+<div class="container-fluid mb-10">
   <div class="row">
     <div class="col-8">
       <app-income (inputEvent)="recieveIncome($event)" ></app-income>
       <app-expenses (inputEvent)="recieveExpenses($event)"></app-expenses>
     </div>
     <div class="col-4 border-left border-info">
-      <app-totals [totalIncome]="incomeObj" [totalExpenses]="expenseObj"></app-totals>
+      <app-totals [incomeArray]="incomeObj" [expenseArray]="expenseObj"></app-totals>
     </div>
   </div>
 </div>
