@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
+import { DisplayDataService } from '../services/display-data.service';
 
 @Component({
   selector: 'app-expenses',
@@ -15,9 +16,13 @@ export class ExpensesComponent implements OnInit {
 
   expenseForm = this.fb.group({
     expenseSources : this.fb.array([
+      this.fb.control(''),
+      this.fb.control(''),
       this.fb.control('')
     ]),
     expenseAmounts: this.fb.array([
+      this.fb.control(''),
+      this.fb.control(''),
       this.fb.control('')
     ])
   });
@@ -31,7 +36,7 @@ export class ExpensesComponent implements OnInit {
 
   @Output() inputEvent = new EventEmitter<any>();
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private displayData: DisplayDataService) { }
 
   ngOnInit() {
   }
@@ -42,7 +47,16 @@ export class ExpensesComponent implements OnInit {
   }
 
   sendAmountInput(){
-    this.inputEvent.emit(this.expenseAmounts.controls)
+    let expenseObj = {'amounts':[]}
+    this.expenseAmounts.controls.forEach(control=>{
+      if(control.value == '') return;
+      expenseObj.amounts.push(control.value)
+      // console.log(control.value);
+    })
+
+    this.displayData.updateExpenses(expenseObj);
+
+    // this.inputEvent.emit(this.expenseAmounts.controls)
   }
   sendSourceInput(){
     this.inputEvent.emit(this.expenseSources.controls)
