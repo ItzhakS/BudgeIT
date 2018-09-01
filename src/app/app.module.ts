@@ -9,6 +9,8 @@ import { IncomeComponent } from './income/income.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { TotalsComponent } from './totals/totals.component';
 import { HeaderComponent } from './header/header.component';
+import { DisplayDataService } from './services/display-data.service';
+import { SaveDataService } from './services/saveData.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,10 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [
+    DisplayDataService,
+    SaveDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
