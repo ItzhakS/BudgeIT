@@ -1,0 +1,15 @@
+.list-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90vw;
+  overflow-x: auto;
+}
+
+.month{
+  height: 55px;
+  width: 95px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.2em;
+  background-color: #65c0f5;/*  #28a7457a; */
+}

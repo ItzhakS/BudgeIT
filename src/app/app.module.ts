@@ -11,6 +11,8 @@ import { TotalsComponent } from './totals/totals.component';
 import { HeaderComponent } from './header/header.component';
 import { DisplayDataService } from './services/display-data.service';
 import { SaveDataService } from './services/saveData.service';
+import { HttpClientModule } from '@angular/common/http';
+import { MonthsComponent } from './months/months.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { SaveDataService } from './services/saveData.service';
     IncomeComponent,
     ExpensesComponent,
     TotalsComponent,
-    HeaderComponent
+    HeaderComponent,
+    MonthsComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule
   ],
   providers: [
     DisplayDataService,

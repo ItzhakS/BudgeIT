@@ -1,0 +1,6 @@
+<button type="button" (click)="changeMonth()" >Change Month</button>
+<div class="container">
+    <div class="monthList list-group" >
+      <button *ngFor="let month of monthList" type="button" class="list-group-item month">{{month}}</button>
+    </div>
+</div>

@@ -10,7 +10,8 @@ export class DisplayDataService {
   currentIncome = this.incomeData.asObservable();
   private expenseData = new BehaviorSubject<object>({});
   currentExpenses = this.expenseData.asObservable();
-
+  private month = new BehaviorSubject<any>('');
+  currentMonth = this.month.asObservable();
 
   constructor() { }
 
@@ -20,6 +21,10 @@ export class DisplayDataService {
 
   updateExpenses(data:object){
     this.expenseData.next(data);
+  }
+
+  updateMonth(data:string){
+    this.month.next(data);
   }
 
 }
