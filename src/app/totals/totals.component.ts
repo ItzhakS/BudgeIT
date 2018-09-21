@@ -22,11 +22,11 @@ export class TotalsComponent implements OnChanges, OnInit {
   }
   
   ngOnChanges(changes: SimpleChanges) {
-    let incomeInfo: SimpleChange = changes.incomeArray;
-    let expensesInfo: SimpleChange = changes.incomeArray;
-    // this.incomeTotal = incomeInfo.currentValue.incomeAmounts.reduce((a,b)=>a+b);
-    console.log(incomeInfo);
-    // console.log(expensesInfo);
+    // let incomeInfo: SimpleChange = changes.incomeArray;
+    // let expensesInfo: SimpleChange = changes.incomeArray;
+    // // this.incomeTotal = incomeInfo.currentValue.incomeAmounts.reduce((a,b)=>a+b);
+    // console.log(incomeInfo);
+    // // console.log(expensesInfo);
   }
   
   ngOnInit() {

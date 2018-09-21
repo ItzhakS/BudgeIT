@@ -1,7 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { DisplayDataService } from '../services/display-data.service';
+import { SaveDataService } from '../services/saveData.service';
 
 @Component({
   selector: 'app-expenses',
@@ -34,11 +35,44 @@ export class ExpensesComponent implements OnInit {
     return this.expenseForm.get('expenseAmounts') as FormArray;
   }
 
-  @Output() inputEvent = new EventEmitter<any>();
+  @Input() month:string;
 
-  constructor(private fb: FormBuilder, private displayData: DisplayDataService) { }
+  // @Output() inputEvent = new EventEmitter<any>();
+
+  constructor(private fb: FormBuilder, private displayData: DisplayDataService, private saveData: SaveDataService) { }
 
   ngOnInit() {
+    this.displayData.currentMonth
+      .subscribe(month=>{
+        this.month = month;
+        console.log(month);
+      })
+
+  }
+
+  onSubmit(){
+    console.log('Submitting');
+    let expenseObj = {"month":this.month, "expenses":{'expenseSources':[],'expenseAmounts':[]}}
+    this.expenseSources.controls.forEach(control=>{
+      if(control.value == '') return;
+      expenseObj.expenses.expenseSources.push(control.value)
+      // console.log(control.value);
+    })
+    this.expenseAmounts.controls.forEach(control=>{
+      if(control.value == '') return;
+      expenseObj.expenses.expenseAmounts.push(control.value)
+      // console.log(control.value);
+    })
+    this.saveData.saveMonthsBudget(expenseObj, false)
+      .subscribe(data => {
+        this.clearControls();
+        console.log(data)
+      });
+    // console.warn(this.expenseForm.value);
+  }
+  clearControls(): any {
+    this.expenseSources.controls.forEach((control)=>{control.reset;control.setValue('');});
+    this.expenseAmounts.controls.forEach((control)=>{control.reset;control.setValue('');});
   }
 
   addExpense() {
@@ -58,7 +92,7 @@ export class ExpensesComponent implements OnInit {
 
     // this.inputEvent.emit(this.expenseAmounts.controls)
   }
-  sendSourceInput(){
-    this.inputEvent.emit(this.expenseSources.controls)
-  }
+  // sendSourceInput(){
+  //   this.inputEvent.emit(this.expenseSources.controls)
+  // }
 }
